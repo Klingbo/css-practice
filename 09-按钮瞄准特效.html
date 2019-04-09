@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        color: silver;
+      }
+
+      /* 设置文字样式 */
+      .box {
+        width: 9em;
+        height: 3em;
+        line-height: 3em;
+        font-size: 30px;
+        text-align: center;
+        letter-spacing: 0.2em;
+      }
+
+      /* 画出瞄准镜中间的圆圈 */
+      .box {
+        position: relative;
+      }
+
+      .box::after {
+        content: "";
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        border: 1px solid red;
+        border-radius: 50%;
+        left: 3em;
+        top: 0;
+      }
+
+      /* 瞄准镜的十字线 */
+      .box .top,
+      .box .bottom {
+        position: absolute;
+        width: 1px;
+        height: 3em;
+        background-color: red;
+      }
+      .box .left,
+      .box .right {
+        position: absolute;
+        width: 3em;
+        height: 1px;
+        background-color: red;
+      }
+
+      .box .top {
+        top: -100%;
+        left: 50%
+      }
+      .box .bottom {
+        bottom: -100%;
+        left: 50%
+      }
+      .box .left {
+        left: 0;
+        top: 50%
+      }
+      .box .right {
+        right: 0;
+        top: 50%
+      }
+
+      @keyframes aim {
+        from {
+          filter: opacity(0.2)
+        }
+        to {
+          filter: opacity(0.8)
+        }
+      }
+
+
+      .box::after, .box .top, .box .bottom, .box .left, .box .right {
+        filter: opacity(0);
+      }
+      .box:hover::after, .box:hover .top, .box:hover .bottom, .box:hover .left, .box:hover .right {
+        animation: aim 1s linear infinite alternate;
+      }
+
+      .box {
+        filter: blur(2px);
+        transition: 0.5s;
+      }
+
+      .box:hover {
+        filter: blur(0.2px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1个文字，4个装饰 -->
+    <div class="box">
+      <span>BUTTON</span>
+      <span class="top"></span>
+      <span class="bottom"></span>
+      <span class="left"></span>
+      <span class="right"></span>
+    </div>
+  </body>
+</html>

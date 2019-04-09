@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,body,.circle {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    :root {
+    --innerRadius: 2em;
+}
+
+    /* 实心圆 */
+    .circle {
+      width: calc(var(--innerRadius) * 2);
+      height: calc(var(--innerRadius) * 2);
+      background-color: lime;
+      border-radius: 50%
+    }
+
+    /* 圆环 */
+    /* 外面一圈绿色，中间一圈黑色跟背景一样，遮住绿色，形成圆环 */
+    .circle {
+      box-shadow: 0 0 0 calc(var(--innerRadius) - 0.4em) black,
+                  0 0 0 var(--innerRadius) lime;
+    }
+
+    /* 1个动态的环 */
+    .circle::before {
+      content: "";
+      position: absolute;
+      width: calc(var(--innerRadius) * 2 * 2);
+      height: calc(var(--innerRadius) * 2 * 2);
+      border: 2px solid lime;
+      border-radius: 50%;
+      animation: pulse 2s ease-out infinite;
+    }
+
+    /* 2个 */
+    .circle::after {
+      content: "";
+      position: absolute;
+      width: calc(var(--innerRadius) * 2 * 2);
+      height: calc(var(--innerRadius) * 2 * 2);
+      border: 2px solid lime;
+      border-radius: 50%;
+      animation: pulse 2s 1s ease-out infinite;
+    }
+
+    /* 动画效果 */
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+        filter: opacity(0.9)
+      }
+
+      to {
+        transform: scale(2);
+        filter:opacity(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+</body>
+</html>

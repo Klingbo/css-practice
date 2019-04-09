@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,body {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 设置渐变背景色 */
+    body {
+      background: linear-gradient(brown, sandybrown);
+    }
+
+    /* 设置文本字体 */
+    .text {
+      font-size: 5em;
+      font-family: "arial black"
+    }
+
+    /* 利用伪元素增加文字 */
+    .text {
+      position: relative;
+    }
+
+    .text::before,
+    .text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: lightyellow;
+    }
+
+    /* 设置左侧文字的遮罩 */
+    .text::before {
+      /* background-color: darkgreen; */
+      clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
+    }
+
+    /* 设置右侧文字遮罩 */
+    .text::after {
+      /* background-color: darkblue; */
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 30% 100%);
+    }
+
+    /* 鼠标滑过，遮罩的文字分别向两边偏移 */
+
+    .text::after,
+    .text::before {
+      transition: 0.2s;
+    }
+
+    .text:hover::before {
+      left: -0.15em;
+      transform: rotate(-5deg);
+      transform-origin: 30% 100%;
+    }
+    .text:hover::after {
+      left: 0.15em;
+      transform: rotate(5deg);
+      transform-origin: 30% 100%;
+    }
+
+    /* 隐藏辅助元素，包括原始文字和伪元素的背景色 */
+    .text {
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="text" data-text="BREAK">BREAK</div>
+</body>
+</html>

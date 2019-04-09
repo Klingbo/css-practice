@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .checkbox,
+      .checkbox .inner,
+      .checkbox .inner .toggle {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 外侧椭圆 */
+      .checkbox {
+        width: 10em;
+        height: 5em;
+        background: linear-gradient(silver, whitesmoke);
+        border-radius: 2.5em;
+        font-size: 40px;
+      }
+
+      /* 内侧椭圆 */
+      .checkbox .inner {
+        width: 8em;
+        height: 3.5em;
+        background: linear-gradient(dimgray, silver);
+        border-radius: 2.5em;
+        box-shadow: inset 0 0 1.5em rgba(0,0,0,0.5);
+        position: relative;
+      }
+
+      /* 圆形按钮 */
+      .checkbox .inner .toggle {
+        width: 3.5em;
+        height: 3.5em;
+        background: linear-gradient(to top, silver, whitesmoke);
+        border-radius: 50%;
+        box-shadow: 0 0.4em 0.6em rgba(0,0,0,0.2);
+        position: absolute;
+        left: 0;
+
+      }
+
+      /* 为圆形按钮增加立体效果 */
+      .checkbox .inner .toggle::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+        content: "OFF";
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        background: linear-gradient(silver,whitesmoke);
+        border-radius: 50%;
+      }
+      .checkbox .inner.active {
+        background: linear-gradient(green, limegreen);
+      }
+
+      .checkbox .inner.active .toggle {
+        left: 60%;
+      }
+
+      .checkbox .inner.active .toggle::before {
+        content: "ON";
+        color: limegreen;
+      }
+
+      .checkbox .inner,.checkbox .inner .toggle {
+        transition:  all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="checkbox">
+      <div class="inner">
+        <div class="toggle"></div>
+      </div>
+    </div>
+
+    <script>
+    
+    document.querySelector('.toggle').onclick = function() {
+      if(document.querySelector('.inner').className.includes('active')) {
+        document.querySelector('.inner').className = 'inner'
+      }else {
+        document.querySelector('.inner').className = 'inner active'
+      }
+    }
+    </script>
+  </body>
+</html>
