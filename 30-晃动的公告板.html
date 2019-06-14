@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center 60%, white, sandybrown);
+      }
+
+      /* 定义公告牌的整体尺寸 */
+      .signboard {
+        width: 400px;
+        height: 300px;
+      }
+
+      /* 设置模板央视 */
+      .signboard {
+        position: relative;
+      }
+      .sign {
+        width: 100%;
+        height: 200px;
+        background: burlywood;
+        border-radius: 15px;
+        position: absolute;
+        bottom: 0;
+      }
+
+      /* 设置有雕刻效果的文字样式 */
+      .sign {
+        color: saddlebrown;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 50px;
+        text-align: center;
+        line-height: 200px;
+        text-shadow: 0 2px 0 rgba(255,255,255,0.3),0 -2px 0 rgba(0,0,0,0.7);
+      }
+
+      /* 画出细绳 */
+      .string {
+        width: 150px;
+        height: 150px;
+        border: 5px solid brown;
+        position: absolute;
+        border-right: none;
+        border-bottom: none;
+        transform: rotate(45deg);
+        top: 38px;
+        left: 122px;
+      }
+
+      /* 画出图钉 */
+      .pin {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .top {
+        background: gray;
+        left: 187px;
+      }
+
+      .left, .right {
+        background: brown;
+        top:110px;
+        box-shadow: 0 2px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .left {
+        left: 80px;
+      }
+      .right{
+        right: 80px;
+      }
+
+      /* 旋转 */
+      .signboard {
+        animation: swing 1s ease-in-out infinite alternate;
+        transform-origin: 200px 12.5px;
+      }
+
+      @keyframes swing {
+        from{
+          transform: rotate(10deg)
+        }
+        to {
+          transform: rotate(-10deg)
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signboard">
+      <div class="sign">THANKS</div>
+      <div class="string"></div>
+      <div class="pin top"></div>
+      <div class="pin left"></div>
+      <div class="pin right"></div>
+    </div>
+  </body>
+</html>
